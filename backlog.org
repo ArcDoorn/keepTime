@@ -1,0 +1,321 @@
+-*- mode:org; -*-
+
+#+Title: keep Time
+#+TODO: TODO(t) INPROCESS(!) | DONE(d@) CANCELED(c@)
+
+* License
+  Copyright (C) 2012 Sebastian Panknin <doorn@web.de>
+  Distributed under the Eclipse Public License, the same as Clojure.
+
+* Intro
+* Diagrams and Docu
+** Style Guide:
+https://github.com/bbatsov/clojure-style-guide
+** DB diagram
+#+begin_src plantuml :file datastructure.png
+class Work {
+  day: date
+  name: string
+  text: string
+}
+
+class TimeSpan {
+  startTime: dateTime
+  endTime: dateTime
+}
+
+Work *-- TimeSpan
+#+end_src
+
+#+RESULTS:
+   [[file:datastructure.png]]
+
+** Wireframe
+   [[file:resources/keepTimeGui.png]]
+   
+* Helpful links and tips
+http://clojure-lab.tumblr.com/post/35207280637/clojure-web-development
+http://blog.clojurewerkz.org/blog/2012/11/05/carmine-timbre-tower-and-nippy-go-1-point-0/
+http://closure-library.googlecode.com/svn/docs/class_goog_date_Date.html
+http://www.chris-granger.com/2012/02/20/overtone-and-clojurescript/
+
+** ClojureScript usage:
+*** cljs compile: lein trampoline cljsbuild auto
+*** cljs repl: rlwrap lein trampoline cljs-build repl-listen
+Add the following line into your cljs main file:
+(repl/connect "http://localhost:9000/repl")
+
+* DONE V0.1
+** DONE Implement funtionality that allows logging time for an item
+   - State "DONE"       from "INPROCESS"  [2012-12-23 Sun 15:14] \\
+     First database communication implemented.
+   - State "INPROCESS"  from "TODO"       [2012-11-09 Fri 07:25]
+Acceptance:
+- item name can be specified
+- several times can be logged for the same and for different items
+- the result is persistent
+- the logged data can be retrieved
+*** DONE design basic data structure
+    - State "DONE"       from "INPROCESS"  [2012-11-09 Fri 20:02] \\
+      Simple structure with just a log item implemented in plantuml.
+    - State "INPROCESS"  from "TODO"       [2012-11-09 Fri 18:32]
+*** DONE start clojure project
+    - State "DONE"       from "INPROCESS"  [2012-11-11 Sun 02:41] \\
+      Leiningen project started, swank included, also played with emacs projects.
+    - State "INPROCESS"  from "TODO"       [2012-11-09 Fri 07:27]
+*** DONE implement DB stuff
+    - State "DONE"       from "INPROCESS"  [2012-12-23 Sun 13:49] \\
+      Kora definitions in model.clj defined,
+      table creation function written.
+    - State "INPROCESS"  from "TODO"       [2012-11-11 Sun 02:42]
+https://github.com/korma/Korma/issues/47
+https://gist.github.com/1401486
+http://sqlkorma.com/docs
+*** DONE write log time function
+    - State "DONE"       from "INPROCESS"  [2012-12-23 Sun 15:13] \\
+      keepTime.model/logTime implemented.
+    - State "INPROCESS"  from "TODO"       [2012-12-21 Fri 11:04]
+*** DONE write report time function
+    - State "DONE"       from "INPROCESS"  [2012-12-23 Sun 14:06] \\
+      keepTime.model/reportTime is written.
+    - State "INPROCESS"  from "TODO"       [2012-12-21 Fri 11:04]
+    
+* DONE V0.2
+** DONE Implement web display for a day
+   - State "DONE"       from "INPROCESS"  [2012-12-28 Fri 11:51] \\
+     The page "day/2012-12-24" can be open, 
+     the day can be changed by providing another url.
+     For refreshing, the browser reload button is used.
+     Work items can be selected, details are displayed then.
+   - State "INPROCESS"  from "TODO"       [2012-12-23 Sun 15:29]
+Acceptance:
+- a web page can be open
+- items for a given day are displayed
+- the logged work is summarized for each item
+- the logged work is summarized for the day
+- the page can be refreshed
+- optional: the day can be selected
+*** DONE find a clojure web frame work
+    - State "DONE"       from "INPROCESS"  [2012-12-25 Tue 13:55] \\
+      Googleing returned noir as a possible solution.
+    - State "INPROCESS"  from "TODO"       [2012-12-25 Tue 13:55]
+Noir is a web framework similar to rails or django:
+http://www.webnoir.org/
+Also of intest is the possibility to use clojurescript:
+http://djhworld.github.com/2012/02/12/getting-started-with-clojurescript-and-noir.html
+http://djhworld.github.com/2012/02/21/getting-started-with-clojurescript-and-noir-part-2.html
+*** DONE layout web page
+    - State "DONE"       from "INPROCESS"  [2012-12-25 Tue 15:35] \\
+      Created wire frame with pencil.
+    - State "INPROCESS"  from "TODO"       [2012-12-25 Tue 13:56]
+*** DONE update DB structure
+    - State "DONE"       from "INPROCESS"  [2012-12-25 Tue 19:53] \\
+      added a name field to work
+    - State "INPROCESS"  from "TODO"       [2012-12-25 Tue 19:35]
+    - some more text fields are needed.
+*** DONE display times
+    - State "DONE"       from "INPROCESS"  [2012-12-26 Wed 23:44] \\
+      times are displayed in time-spans for days and work packages
+    - State "INPROCESS"  from "TODO"       [2012-12-26 Wed 18:57]
+*** DONE implement the web page
+    - State "DONE"       from "INPROCESS"  [2012-12-28 Fri 02:17] \\
+      Webpage is working not using any forms.
+    - State "INPROCESS"  from "TODO"       [2012-12-25 Tue 18:38]
+*** DONE function: format a time string
+    - State "DONE"       from "INPROCESS"  [2012-12-25 Tue 18:36] \\
+      formatTime formats a number of seconds as a string like "1h 30min".
+    - State "INPROCESS"  from "TODO"       [2012-12-25 Tue 18:36]
+*** DONE function: calculate duration of work package
+    - State "DONE"       from "INPROCESS"  [2012-12-26 Wed 18:57] \\
+      formated-duration-of-work in tools implemented.
+    - State "INPROCESS"  from "TODO"       [2012-12-26 Wed 18:57]
+*** DONE function: calculate duration for day
+    - State "DONE"       from "INPROCESS"  [2012-12-26 Wed 18:58] \\
+      formated-duration-of-day in tools implemented.
+    - State "INPROCESS"  from "TODO"       [2012-12-26 Wed 18:57]
+*** DONE remove empty () for a fresh day
+    - State "DONE"       from "INPROCESS"  [2012-12-28 Fri 11:49] \\
+      format duration returns "0 min" when the time would be empty otherwise.
+    - State "INPROCESS"  from "TODO"       [2012-12-28 Fri 11:32]
+*** DONE cleanup files and style
+    - State "DONE"       from "INPROCESS"  [2012-12-28 Fri 11:29] \\
+      core splitted to tools and view,
+      spelling changed, 
+      keepTime.view/layout uses keywords now.
+    - State "INPROCESS"  from "TODO"       [2012-12-28 Fri 10:19]
+- use this-type-writing instead of thisTypeWriting
+- remove stuff from core
+- use kewords for complex functions
+* DONE V0.3
+  - State "DONE"       from "INPROCESS"  [2013-05-01 Wed 16:58] \\
+    first usable version released
+  - State "INPROCESS"  from "TODO"       [2012-12-28 Fri 12:08]
+** DONE Show a calendar for date selection
+   - State "DONE"       from "INPROCESS"  [2013-01-06 Sun 12:01] \\
+     A calendar is implemented, clojurescript, jayq and goog/closure are established.
+   - State "INPROCESS"  from "TODO"       [2012-12-29 Sat 13:38]
+- a calendar is displayed
+- the date of the page is selected
+- a date can be choosen
+*** DONE include clojurescript
+    - State "DONE"       from "INPROCESS"  [2012-12-29 Sat 14:10] \\
+      I followed http://djhworld.github.com/2012/02/12/getting-started-with-clojurescript-and-noir.html
+      and added clojurescript into my project.
+    - State "INPROCESS"  from "TODO"       [2012-12-29 Sat 13:39]
+*** DONE use jquery equivalent
+    - State "DONE"       from "INPROCESS"  [2013-01-05 Sat 12:42] \\
+      We use jayq for jQuery functionality, however,
+      we use goog.ui for the DatePicker itself.
+    - State "INPROCESS"  from "TODO"       [2013-01-05 Sat 12:41]
+
+*** DONE add calender component
+    - State "DONE"       from "INPROCESS"  [2013-01-05 Sat 23:53] \\
+      date picker of goog added.
+    - State "INPROCESS"  from "TODO"       [2013-01-05 Sat 12:43]
+*** DONE give a functionality to the component
+    - State "DONE"       from "INPROCESS"  [2013-01-06 Sun 11:59] \\
+      When changing the date in the date picker the new selected date is shown.
+      The date of the page is the preselection in the datepicker.
+    - State "INPROCESS"  from "TODO"       [2013-01-05 Sat 23:54]
+[X] set date of the current page
+[X] redircet to the selected date
+** DONE Implement web interface
+   - State "DONE"       from "INPROCESS"  [2013-05-01 Wed 16:58] \\
+     first usable version released.
+   - State "INPROCESS"  from "TODO"       [2012-12-28 Fri 12:09]
+Acceptance:
+- [X] day can be selected
+- [X] work package can be added
+- [X] work package can be deleted
+- [X] work package name and text can be modified
+- [X] timespans can be added
+- [X] timespans can be modified
+- [X] timespans can be deleted
+*** DONE concept for logging time
+    - State "DONE"       from "TODO"       [2013-03-19 Tue 21:48] \\
+      Study done and written down in the diary.
+    - State "INPROCESS"  from "TODO"       [2012-12-28 Fri 12:09]
+How is the process working?
+Which steps needs to be performed?
+How can new work packages be created?
+How can time spans be logged (partial logging)?
+*** DONE use fields instead of paragraphs, etc.
+    - State "DONE"       from "INPROCESS"  [2013-04-09 Tue 07:18] \\
+      all data is tagged an automatically rendered as field.
+    - State "INPROCESS"  from "TODO"       [2013-03-19 Tue 20:37]
+    - [X] Goog/Closure has a field component, that can be used to make fields editable.
+    - [X] try a modifiable Title
+    - [X] How to mark fields as editable?
+    - [X] Which information is needed? How can it be provided?
+    - [X] Which handlers need to be created?
+    - [X] Who is creating needed buttons?
+    - [X] Add classes and buttons in the server part
+    - [ ] Add functions in the rendering part
+*** DONE client side edit and save functions
+    - State "DONE"       from "INPROCESS"  [2013-04-10 Wed 07:49] \\
+      one can edit and save fields, 
+      the full page is reloaded after every save (suboptimal)
+    - State "INPROCESS"  from "TODO"       [2013-04-09 Tue 07:30]
+    - a reload is needed (as a workaround for now).
+*** DONE validation for text fields (not empty)
+    - State "INPROCESS"  from "TODO"       [2013-04-21 Sun 16:07]
+*** DONE validation and formatting for times
+    - State "DONE"       from "INPROCESS"  [2013-04-26 Fri 07:54] \\
+      dispatcher fixed, format time to submit, expects HH:mm.
+    - State "INPROCESS"  from "INPROCESS"  [2013-04-26 Fri 07:53]
+    - State "INPROCESS"  from "TODO"       [2013-04-25 Thu 23:23]
+*** DONE handle negative durations
+    - State "DONE"       from "INPROCESS"  [2013-04-29 Mon 21:42] \\
+      new multimethods implemented
+    - State "INPROCESS"  from "TODO"       [2013-04-28 Sun 11:50]
+    - State "INPROCESS"  from "TODO"       [2013-04-26 Fri 22:36]
+*** DONE remove time drift
+    - State "DONE"       from "INPROCESS"  [2013-04-26 Fri 22:49] \\
+      Set the timezone in the formatter to UTC, so that there is no difference between the display and the DB.
+    - State "INPROCESS"  from "TODO"       [2013-04-26 Fri 22:49]
+*** DONE delete function
+    - State "DONE"       from "INPROCESS"  [2013-04-21 Sun 16:06] \\
+      Delete buttons for work and timespan added and rendered to all buttons. Reload of page forced, for now.
+    - State "INPROCESS"  from "TODO"       [2013-04-21 Sun 11:52]
+*** DONE new functions
+    - State "DONE"       from "INPROCESS"  [2013-04-21 Sun 11:51] \\
+      New functionality implemented. It reloads the page, wich should be avoided in future.
+    - State "INPROCESS"  from "TODO"       [2013-04-18 Thu 07:26]
+*** DONE ajax new function
+    - State "DONE"       from "INPROCESS"  [2013-04-17 Wed 22:02] \\
+      remote new entry defined
+    - State "INPROCESS"  from "TODO"       [2013-04-17 Wed 07:40]
+*** DONE ajax callbacks for save
+    - State "DONE"       from "TODO"       [2013-04-09 Tue 07:21] \\
+      a general save function is done, assuming, 
+      that all validation and formation is done on the client side
+*** CANCELED ajax callbacks for time updates
+    - State "CANCELED"   from "TODO"       [2013-04-09 Tue 07:22] \\
+      Not needed for now as the general function can be used and 
+      the validation is done on the client side.
+*** DONE ajax callbacks for delete
+    - State "DONE"       from "TODO"       [2013-04-11 Thu 07:30] \\
+      delete is defined as remote and use multimethods
+*** DONE new workload has problems on a new day
+    - State "DONE"       from "TODO"       [2013-04-29 Mon 22:09] \\
+      in the cljs: (when work ... added.
+There is a superficious slash at the end
+*** DONE build an installation package
+    - State "DONE"       from "INPROCESS"  [2013-05-01 Wed 16:57]
+    - State "INPROCESS"  from "TODO"       [2013-04-30 Tue 07:02]
+* INPROCESS V0.4
+  - State "INPROCESS"  from "TODO"       [2013-05-02 Thu 07:34]
+** Implement comparison between desired and logged time for day  
+   - Expected number of work hours is hard coded in a "config file".
+   - It is shown for each day in the headline.
+** Implement holidays
+   - Holiday and weekends are recogniced.
+   - Work hours for these days are zero.
+   - Work hours for "Heiligabend" and "Sylvester" are half of the normal. 
+*** TODO function for tagging a day
+for a given day the dayOfWeek and a holidayname if any is returned
+*** TODO function calculating the work hours
+** vacation, illness
+   - Days can be marked as vacation/illness.
+   - Work hours for these days are zero.
+** Have a global config file
+   - a config time is evaluated during runtime
+   - the file is in clojure or json format
+   - it is either found at local dir, home dir or in the resources (given at compile time)
+   - the database path can be configured
+   - work hours and holidays are configured
+* TODO V0.5
+** Layout of the webpage
+Acceptance:
+- a Logo is displayed
+- colors are defined
+- fonts are defined
+- it is clear, which parts are editable, 
+- ..., which are buttons, 
+- ..., which are links.
+** Make it run without internet
+   - the webside can be used w/o internet (no external JS)
+   - compilation is possible w/o internet (when all deps are given 
+   and some configuration is done)
+* TODO V0.6
+** Implement user reports/diagramms
+** Implement tags
+* Wish-list
+** More client side handling (less reloads)
+** Let it work for different time zones
+** Implement a setup method for easy installation
+** Have an installer
+** Installation documentation
+** User manual
+** Test data
+** Compile to fast JavaScript
+** Implement a time logging functionality
+Acceptance:
+- a button can be clicked
+- current, existent or new work package can be selected
+- a stop button appears
+- the logging is active, even when the browser was closed.
+** Implement virtimo output
+** Implement auto tag fetch (e.g. Jira)
+** Implement multi-user functionality
+

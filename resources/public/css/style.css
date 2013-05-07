@@ -1,0 +1,65 @@
+/* http://colorschemedesigner.com/#0f21TgDhNLVNw */
+.primary-1 { background-color: #8E5944 }
+.primary-2 { background-color: #58433B } /* shadow light */ 
+.primary-3 { background-color: #421807 } /* shadow dark */  
+.primary-4 { background-color: #E7B39E } /* light light */  
+.primary-5 { background-color: #E7CEC4 } /* light dark */   
+
+.complement-1 { background-color: #2F614C }
+.complement-2 { background-color: #293C34 } /* shadow light */ 
+.complement-3 { background-color: #052D1C } /* shadow dark */  
+.complement-4 { background-color: #98DEC0 } /* light light */  
+.complement-5 { background-color: #BCDECF } /* light dark */   
+
+body {
+    font-family:'DejaVu Serif';
+    background-color: #58433B;
+    color: #052D1C;
+}
+h1 {
+    font-family:'DejaVu Sans';
+}
+h1.logo {
+    font-family: Charter;
+    font-weight: normal;
+    font-style: italic;
+}
+
+div#logo {
+    color: #BCDECF;
+    /* height: 6cm; */
+    float: left;
+    width: 33%;
+    background-image: url(/pics/logo.png);
+    background-repeat:no-repeat;
+    padding-top: 3cm;
+    padding-left: 1cm;
+}
+div#title {
+    float: left;
+    width: 64%;
+}
+div#content {
+    width: 100%;
+    clear:left;
+}
+
+div#left {
+    float: left;
+    width: 33%;
+}
+div#right {
+    float: left;
+    width: 22%;
+}
+div#middle {
+    float: left;
+    width: 45%;
+}
+div.colcontainer {
+    width: 100%;
+}
+div.col {
+    float: left;
+    width: 50%;
+}
