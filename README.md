@@ -35,6 +35,19 @@ Usage
 
    $ lein run 
 
+User Interface
+--------------
+
+The user interface is given as a web page (using Noire and
+ClojureScript). The plan is to go over to a single page application.
+You can click on the items and a box will open for editing. Klicking
+on okay (at the moment only an o is shown), the box is closed, the
+changes are saved in the data base and the page is reloaded.
+
+For the design I was inspired by the Maya, whose calendar cycle
+stared again at 2012-12-21, close to the date, when I started 
+the project.
+
 License
 -------
    Copyright (C) 2012 Sebastian Panknin <doorn@web.de>

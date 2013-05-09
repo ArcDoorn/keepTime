@@ -3,11 +3,6 @@
 #+Title: keep Time
 #+TODO: TODO(t) INPROCESS(!) | DONE(d@) CANCELED(c@)
 
-* License
-  Copyright (C) 2012 Sebastian Panknin <doorn@web.de>
-  Distributed under the Eclipse Public License, the same as Clojure.
-
-* Intro
 * Diagrams and Docu
 ** Style Guide:
 https://github.com/bbatsov/clojure-style-guide
@@ -265,20 +260,23 @@ There is a superficious slash at the end
     - State "INPROCESS"  from "TODO"       [2013-04-30 Tue 07:02]
 * INPROCESS V0.4
   - State "INPROCESS"  from "TODO"       [2013-05-02 Thu 07:34]
-** Implement comparison between desired and logged time for day  
-   - Expected number of work hours is hard coded in a "config file".
-   - It is shown for each day in the headline.
-** Implement holidays
+** INPROCESS Implement holidays
+   - State "INPROCESS"  from "TODO"       [2013-05-09 Thu 21:33]
    - Holiday and weekends are recogniced.
    - Work hours for these days are zero.
    - Work hours for "Heiligabend" and "Sylvester" are half of the normal. 
+*** INPROCESS function for the holidays of a given year
+    - State "INPROCESS"  from "TODO"       [2013-05-09 Thu 21:35]
 *** TODO function for tagging a day
 for a given day the dayOfWeek and a holidayname if any is returned
 *** TODO function calculating the work hours
-** vacation, illness
+** TODO Implement comparison between desired and logged time for day  
+   - Expected number of work hours is hard coded in a "config file".
+   - It is shown for each day in the headline.
+** TODO vacation, illness
    - Days can be marked as vacation/illness.
    - Work hours for these days are zero.
-** Have a global config file
+** TODO Have a global config file
    - a config time is evaluated during runtime
    - the file is in clojure or json format
    - it is either found at local dir, home dir or in the resources (given at compile time)
@@ -293,6 +291,7 @@ Acceptance:
 - it is clear, which parts are editable, 
 - ..., which are buttons, 
 - ..., which are links.
+
 ** Make it run without internet
    - the webside can be used w/o internet (no external JS)
    - compilation is possible w/o internet (when all deps are given 
