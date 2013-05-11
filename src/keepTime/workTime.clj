@@ -60,13 +60,60 @@
      :pentecost-monday (ctc/plus eastern (ctc/days 50)),
      :corpus-christi (ctc/plus eastern (ctc/days 60)),
      :augsburger-peace-feast (ctc/date-time year 8 8),
-     :maria-ascension (ctc/date-time 8 15),
-     :german-unity-day (ctc/date-time 10 3),
-     :reformation-day (ctc/date-time 10 31),
-     :all-saints-day (ctc/date-time 11 1),
-     :day-of-repentance-and-prayer :foo}))
+     :maria-ascension (ctc/date-time year 8 15),
+     :german-unity-day (ctc/date-time year 10 3),
+     :reformation-day (ctc/date-time year 10 31),
+     :all-saints-day (ctc/date-time year 11 1),
+     :day-of-repentance-and-prayer (week-day-before-date
+                                    :wed
+                                    (ctc/date-time year 11 23)),
+     :holy-eve (ctc/date-time year 12 24),
+     :first-day-of-christmas (ctc/date-time year 12 25),
+     :second-day-of-christmas (ctc/date-time year 12 26)
+     :silvester (ctc/date-time year 12 31)}))
 
 (defn date-tags
   "Tag a day with day of week and with holiday tags."
   [date]
-  [(week-tags (- (ctc/day-of-week date) 1))])
+  (conj
+   (map first (filter
+               #(= date (second %))
+               (holiday-list (ctc/year date))))
+   (week-tags (- (ctc/day-of-week date) 1))))
+
+(defn calculate-work-hours
+  [date]
+  (let [hours-per-tag
+        {:new-year 0,
+         :epiphany 1,
+         :maundy-thursday 1,
+         :good-friday 0,
+         :easter-sunday 0,
+         :easter-monday 0,
+         :international-workers-day 0,
+         :ascension 0,
+         :pentecost-sunday 0,
+         :pentecost-monday 0,
+         :corpus-christi 1,
+         :augsburger-peace-feast 1,
+         :maria-ascension 1,
+         :german-unity-day 0,
+         :reformation-day 1,
+         :all-saints-day 1,
+         :day-of-repentance-and-prayer 1,
+         :holy-eve 1/2,
+         :first-day-of-christmas 0,
+         :second-day-of-christmas 0,
+         :silvester 1/2,
+         :mon 1,
+         :tue 1,
+         :wed 1,
+         :thu 1,
+         :fri 1,
+         :sat 0,
+         :sun 0},
+        date-tags (date-tags date),
+        base-work-hours 8]
+    (* base-work-hours
+       (apply min
+              (map hours-per-tag date-tags)))))

@@ -260,28 +260,28 @@ There is a superficious slash at the end
     - State "INPROCESS"  from "TODO"       [2013-04-30 Tue 07:02]
 * INPROCESS V0.4
   - State "INPROCESS"  from "TODO"       [2013-05-02 Thu 07:34]
-** INPROCESS Implement holidays
+** DONE Implement holidays
+   - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 20:51] \\
+     keepTime.workTime has a function for calculation the working times with a hard coded list of holidays.
    - State "INPROCESS"  from "TODO"       [2013-05-09 Thu 21:33]
    - Holiday and weekends are recogniced.
    - Work hours for these days are zero.
    - Work hours for "Heiligabend" and "Sylvester" are half of the normal. 
-*** INPROCESS function for the holidays of a given year
+*** DONE function for the holidays of a given year
+    - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 19:42] \\
+      minimal number of holidays ae implemented.
     - State "INPROCESS"  from "TODO"       [2013-05-09 Thu 21:35]
-*** TODO function for tagging a day
+*** DONE function for tagging a day
+    - State "DONE"       from "TODO"       [2013-05-11 Sat 19:43] \\
+      day of week and holiday if any are returned
 for a given day the dayOfWeek and a holidayname if any is returned
-*** TODO function calculating the work hours
+*** DONE function calculating the work hours
+    - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 20:50] \\
+      calculation with hard coded working hours implemented.
+    - State "INPROCESS"  from "TODO"       [2013-05-11 Sat 20:21]
 ** TODO Implement comparison between desired and logged time for day  
    - Expected number of work hours is hard coded in a "config file".
    - It is shown for each day in the headline.
-** TODO vacation, illness
-   - Days can be marked as vacation/illness.
-   - Work hours for these days are zero.
-** TODO Have a global config file
-   - a config time is evaluated during runtime
-   - the file is in clojure or json format
-   - it is either found at local dir, home dir or in the resources (given at compile time)
-   - the database path can be configured
-   - work hours and holidays are configured
 * TODO V0.5
 ** Layout of the webpage
 Acceptance:
@@ -292,14 +292,25 @@ Acceptance:
 - ..., which are buttons, 
 - ..., which are links.
 
+* TODO V0.6
+** Implement user reports/diagramms
+* Wish-list
+** Show day name / holiday name
+** Have a global config file
+   - a config time is evaluated during runtime
+   - the file is in clojure or json format
+   - it is either found at local dir, home dir or in the resources (given at compile time)
+   - the database path can be configured
+   - work hours and holidays are configured
+** vacation, illness
+   - Days can be marked as vacation/illness.
+   - Work hours for these days are zero.
+
 ** Make it run without internet
    - the webside can be used w/o internet (no external JS)
    - compilation is possible w/o internet (when all deps are given 
    and some configuration is done)
-* TODO V0.6
-** Implement user reports/diagramms
 ** Implement tags
-* Wish-list
 ** More client side handling (less reloads)
 ** Let it work for different time zones
 ** Implement a setup method for easy installation
