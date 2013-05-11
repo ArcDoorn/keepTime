@@ -319,6 +319,7 @@ Acceptance:
 ** User manual
 ** Test data
 ** Compile to fast JavaScript
+** update to clojure 1.5
 ** Implement a time logging functionality
 Acceptance:
 - a button can be clicked

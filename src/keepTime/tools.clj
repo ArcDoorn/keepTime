@@ -6,9 +6,15 @@
 
 (def db-formatter (formatter (time-zone-for-offset 0)
                              "yyyy-MM-dd'T'HH:mm:ss"
-                             "yyyy-MM-dd HH:mm:ss"))
+                             "yyyy-MM-dd HH:mm:ss"
+                             "yyyy-MM-dd"))
 
 (def time-formatter (formatter "HH:mm"))
+
+(defn db-date
+  "parse a date given from the DB"
+  [db-date-string]
+  (parse db-formatter db-date-string))
 
 (defn format-time
   "Formats a date-time fom the DB to a timestring HH:mm as it is

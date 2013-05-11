@@ -3,7 +3,8 @@
   (:use hiccup.core) 
   (:use hiccup.page) 
   (:use hiccup.element) 
-  (:use keepTime.model) 
+  (:use keepTime.model)
+  (:use [keepTime.workTime :only [calculate-work-hours]])
   (:use keepTime.tools))
 
 ;; centrale page skeleton:
@@ -115,6 +116,8 @@
      (str "Day " day " "
           (html [:span.time "("
                  (formated-duration-of-day day-record)
+                 " of "
+                 (format-duration (calculate-work-hours day))
                  ")"]))
      :init-script
      (str "$(function() {keepTime.main.init_page('" day "');});")
@@ -138,6 +141,8 @@
      (str "Day " day " "
           (html [:span.time "("
                  (formated-duration-of-day day-record)
+                 " of "
+                 (format-duration (calculate-work-hours day))
                  ")"]))
      :init-script
      (str "$(function() {keepTime.main.init_page('" day "', '" id "');});")

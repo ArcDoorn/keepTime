@@ -1,5 +1,6 @@
 (ns keepTime.workTime
-  (require [clj-time.core :as ctc ]))
+  (:require [clj-time.core :as ctc])
+  (:use [keepTime.tools :only [db-date]]))
 
 (def week-tags
   "Week day names used here"
@@ -112,8 +113,8 @@
          :fri 1,
          :sat 0,
          :sun 0},
-        date-tags (date-tags date),
-        base-work-hours 8]
+        tags (date-tags (db-date date)),
+        base-work-hours (* 8 3600)]
     (* base-work-hours
        (apply min
-              (map hours-per-tag date-tags)))))
+              (map hours-per-tag tags)))))
