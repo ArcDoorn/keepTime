@@ -258,7 +258,9 @@ There is a superficious slash at the end
 *** DONE build an installation package
     - State "DONE"       from "INPROCESS"  [2013-05-01 Wed 16:57]
     - State "INPROCESS"  from "TODO"       [2013-04-30 Tue 07:02]
-* INPROCESS V0.4
+* DONE V0.4
+  - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 23:44] \\
+    first simple version only showing working hours with a semifixed holiday list
   - State "INPROCESS"  from "TODO"       [2013-05-02 Thu 07:34]
 ** DONE Implement holidays
    - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 20:51] \\
@@ -279,11 +281,14 @@ for a given day the dayOfWeek and a holidayname if any is returned
     - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 20:50] \\
       calculation with hard coded working hours implemented.
     - State "INPROCESS"  from "TODO"       [2013-05-11 Sat 20:21]
-** TODO Implement comparison between desired and logged time for day  
+** DONE Implement comparison between desired and logged time for day  
+   - State "DONE"       from "INPROCESS"  [2013-05-11 Sat 23:43] \\
+     show the expected working hours
+   - State "INPROCESS"  from "TODO"       [2013-05-11 Sat 23:43]
    - Expected number of work hours is hard coded in a "config file".
    - It is shown for each day in the headline.
 * TODO V0.5
-** Layout of the webpage
+** TODO Layout of the webpage
 Acceptance:
 - a Logo is displayed
 - colors are defined
