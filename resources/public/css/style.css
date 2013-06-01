@@ -1,24 +1,82 @@
-/* http://colorschemedesigner.com/#0f21TgDhNLVNw */
-.primary-1 { background-color: #8E5944 }
-.primary-2 { background-color: #58433B } /* shadow light */ 
-.primary-3 { background-color: #421807 } /* shadow dark */  
-.primary-4 { background-color: #E7B39E } /* light light */  
-.primary-5 { background-color: #E7CEC4 } /* light dark */   
+/* http://colorschemedesigner.com/#0h41Nw0vvMPwV */
+/* Feel free to copy&paste color codes to your application */
 
-.complement-1 { background-color: #2F614C }
-.complement-2 { background-color: #293C34 } /* shadow light */ 
-.complement-3 { background-color: #052D1C } /* shadow dark */  
-.complement-4 { background-color: #98DEC0 } /* light light */  
-.complement-5 { background-color: #BCDECF } /* light dark */   
+.primary-1 { background-color: #FB4E00 }
+.primary-2 { background-color: #99593C }
+.primary-3 { background-color: #722400 }
+.primary-4 { background-color: #FD7C41 }
+.primary-5 { background-color: #FD9F75 }
+
+.secondary-a-1 { background-color: #FB8800 }
+.secondary-a-2 { background-color: #996F3C }
+.secondary-a-3 { background-color: #723E00 }
+.secondary-a-4 { background-color: #FDA741 }
+.secondary-a-5 { background-color: #FDBF75 }
+
+.secondary-b-1 { background-color: #086B9F }
+.secondary-b-2 { background-color: #294E61 }
+.secondary-b-3 { background-color: #012F49 }
+.secondary-b-4 { background-color: #3E9DD1 }
+.secondary-b-5 { background-color: #66ABD1 }
+
+.complement-1 { background-color: #00AA69 }
+.complement-2 { background-color: #286850 }
+.complement-3 { background-color: #004D30 }
+.complement-4 { background-color: #37D59A }
+.complement-5 { background-color: #63D5AA }
 
 body {
     font-family:'DejaVu Serif';
-    background-color: #58433B;
-    color: #052D1C;
+    background-color: #FDBF75;
+    color: #012F49;
 }
+
+a {
+    color: #004D30; 
+    text-decoration:none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+span.editable {
+    padding: 2px;
+}
+span.editable:hover {
+    border: 1px dashed #723E00;
+    padding: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+iframe.editable, body.editable {
+    background: #FD7C41 !important;
+    color: #012F49 !important;
+    border: 1px solid #723E00;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 0px;
+}
+
+li.work {
+    padding:20px; 
+    background: #FD7C41; /*FD9F75;*/ 
+    /*border:2px solid #723E00;*/
+    border-left: 4px solid #012F49; /*#723E00;*/ 
+    border-radius:10px;
+    margin-right: 1cm;
+    margin-bottom: 3mm;
+}
+
 h1 {
     font-family:'DejaVu Sans';
 }
+
 h1.logo {
     font-family: Charter;
     font-weight: normal;
@@ -32,14 +90,36 @@ div#logo {
     width: 33%;
     background-image: url(/pics/logo.png);
     background-repeat:no-repeat;
+    background-position-x: 30px;
+    padding-bottom: 3mm;
     padding-top: 3cm;
     padding-left: 1cm;
 }
+
+.button {
+    border-radius: 5px;
+    background-color: #FDBF75;
+    padding-left:10px;
+    padding-right:10px;
+    border: solid 2px #012F49;
+    font-size: large;
+    font-weight: bold;
+}
+
+.button.delete.data-tab-work {
+    float: right;
+}
+.button.new.data-tab-work {
+   background-color: #FD7C41;
+    margin-left: 1cm;
+}
+
 div#title {
     float: left;
     width: 64%;
 }
 div#content {
+    /* overflow:auto; color: #b05b01; font-size:14px; font-family:"Monaco", "Consolas", "Courier New", monospace; width: 386px; */
     width: 100%;
     clear:left;
 }
@@ -54,7 +134,13 @@ div#right {
 }
 div#middle {
     float: left;
-    width: 45%;
+    width: 35%;
+    padding:20px; 
+    background: #FD7C41; /*FD9F75;*/ 
+    /* border:2px solid #723E00;  */
+    border-left: 4px solid #012F49; 
+    border-radius:10px;
+    margin-right:5mm;
 }
 div.colcontainer {
     width: 100%;

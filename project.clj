@@ -1,4 +1,4 @@
-(defproject keepTime "0.4.0-SNAPSHOT"
+(defproject keepTime "0.5.0-SNAPSHOT"
   :description "A small time tracker and project management software."
   :main keepTime.core
   :aot [keepTime.core]

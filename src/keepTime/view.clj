@@ -22,8 +22,8 @@
                  (include-js "/js/cljs.js")
                  (javascript-tag init-script)
                  [:div#top
-                  [:div#logo [:h1.logo "Keep Time"]]
-                  [:div#title [:h1.title title]]]
+                  [:div#logo [:h1.logo "&nbsp"]]
+                  [:div#title title]]
                  [:div#content
                   [:div#left left]
                   [:div#middle middle]
@@ -40,9 +40,11 @@
                                             :id id})]
     (html [:span {:class (str "editable " data-classes)} content]
           [:span {:style "display:none",
-               :class (str "button submit " data-classes)} "o"]
+                  :class (str "button submit " data-classes)
+                  :title "Ok"} "o"]
           [:span {:style "display:none",
-               :class (str "button cancel " data-classes)} "x"])))
+                  :class (str "button cancel " data-classes)
+                  :title "Abbrechen"} "x"])))
 
 ;; work and time span details
 (defpartial timespan-details [time-span]
@@ -61,8 +63,9 @@
                          (data-to-class-string
                           {:tab "timespan",
                            :id (:id time-span)})
-                         " button delete")}
-          "d"]]))
+                         " button delete")
+                 :title "Löschen"}
+          "-"]]))
 
 (defpartial work-details [work day]
   (html [:h2 (editable-field (:name work) "work" "name" (:id work))]
@@ -80,7 +83,9 @@
                            (data-to-class-string
                             {:work (:id work),
                              :day day,
-                             :tab "timespan"}))} "New"]]))
+                             :tab "timespan"}))
+                    :title "Neues Zeit erfassen"}
+             "+"]]))
 ;; list of work packages
 (defpartial work-list [day works]
   (html
@@ -96,29 +101,29 @@
                                  (data-to-class-string
                                   {:tab "work",
                                    :id (:id %)})
-                                 " button delete")}
-                  "d"]])
+                                 " button delete")
+                         :title "Löschen"} "-"
+                  ]])
          works)]
    [:p [:span {:class (str "button new "
                            (data-to-class-string
                             {:day day,
-                             :tab "work"}))}
-        "New"]]))
+                             :tab "work"}))
+               :title "Neues Arbeitspaket"} "+"]]))
 
 ;; provided pages:
 ;; day overview w/o selected work package
 (defpage "/day/:day" {:keys [day]}
   (let [day-record (report-time day)]
     (layout
-     :browser-title
-     (str "Day " day)
-     :title
-     (str "Day " day " "
-          (html [:span.time "("
-                 (formated-duration-of-day day-record)
-                 " of "
-                 (format-duration (calculate-work-hours day))
-                 ")"]))
+     :browser-title day
+     :title (html [:h1 "Keep Time: " day]
+                  [:p [:span.time 
+                       "Geplante Zeit: "
+                       (format-duration (calculate-work-hours day))
+                       [:br]
+                       "Gebuchte Zeit: "
+                       (formated-duration-of-day day-record)]])
      :init-script
      (str "$(function() {keepTime.main.init_page('" day "');});")
      :left
@@ -135,15 +140,14 @@
                           (:work day-record)))
         ]
     (layout
-     :browser-title
-     (str "Day " day)
-     :title
-     (str "Day " day " "
-          (html [:span.time "("
-                 (formated-duration-of-day day-record)
-                 " of "
-                 (format-duration (calculate-work-hours day))
-                 ")"]))
+     :browser-title day
+     :title (html [:h1 "Keep Time: " day]
+                  [:p [:span.time 
+                       "Geplante Zeit: "
+                       (format-duration (calculate-work-hours day))
+                       [:br]
+                       "Gebuchte Zeit: "
+                       (formated-duration-of-day day-record)]])
      :init-script
      (str "$(function() {keepTime.main.init_page('" day "', '" id "');});")
      :left

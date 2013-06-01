@@ -1,7 +1,9 @@
 ;; -*- mode:clojure; -*-
 
 (ns keepTime.calendar
-  (:require [goog.ui.DatePicker])
+  (:require [goog.ui.DatePicker]
+            [goog.i18n.DateTimeSymbols_de]
+            [goog.i18n.DateTimeSymbols])
   (:use [keepTime.tools :only [date-to-url]]))
 
 
@@ -16,6 +18,8 @@
 (defn render-calendar 
   "Renders a calender component to a given div element"
   [div day]
+  (set! goog.i18n.DateTimeSymbols
+        goog.i18n.DateTimeSymbols_de)
   (let [calendar (goog.ui/DatePicker.)]
     (.setDate calendar (js/Date. day))
     (.render calendar div)

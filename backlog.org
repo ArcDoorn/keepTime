@@ -287,20 +287,35 @@ for a given day the dayOfWeek and a holidayname if any is returned
    - State "INPROCESS"  from "TODO"       [2013-05-11 Sat 23:43]
    - Expected number of work hours is hard coded in a "config file".
    - It is shown for each day in the headline.
-* TODO V0.5
-** TODO Layout of the webpage
+* INPROCESS V0.5
+  - State "INPROCESS"  from "TODO"       [2013-05-30 Thu 08:00]
+** DONE Layout of the webpage
+   - State "DONE"       from "INPROCESS"  [2013-06-01 Sat 23:34] \\
+     layout "presentable"
+   - State "INPROCESS"  from "TODO"       [2013-05-30 Thu 08:00]
 Acceptance:
-- a Logo is displayed
-- colors are defined
-- fonts are defined
-- it is clear, which parts are editable, 
-- ..., which are buttons, 
-- ..., which are links.
-
+- [X] a Logo is displayed
+- [X] colors are defined
+- [X] fonts are defined
+- [X] it is clear, which parts are editable, 
+- [X] ..., which are buttons, 
+- [X] ..., which are links.
+*** DONE layout in css
+    - State "DONE"       from "INPROCESS"  [2013-06-01 Sat 23:24] \\
+      several styssheet things done
+    - State "INPROCESS"  from "TODO"       [2013-05-31 Fri 07:41]
+    - [X] buttons at the right position
+    - [X] links in the calendar
+    - [X] month/year list in the calendar
+*** DONE buttons as icons
+    - State "DONE"       from "TODO"       [2013-06-01 Sat 22:48] \\
+      tested but but normal symbols with css are nicer
 * TODO V0.6
 ** Implement user reports/diagramms
 * Wish-list
+** better/smaller edit fields
 ** Show day name / holiday name
+** Display description in the workload list
 ** Have a global config file
    - a config time is evaluated during runtime
    - the file is in clojure or json format

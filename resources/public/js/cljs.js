@@ -358,13 +358,6 @@ goog.base = function(a, b, c) {
 goog.scope = function(a) {
   a.call(goog.global)
 };
-goog.debug = {};
-goog.debug.Error = function(a) {
-  Error.captureStackTrace ? Error.captureStackTrace(this, goog.debug.Error) : this.stack = Error().stack || "";
-  a && (this.message = String(a))
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.string = {};
 goog.string.Unicode = {NBSP:"\u00a0"};
 goog.string.startsWith = function(a, b) {
@@ -694,6 +687,13 @@ goog.string.parseInt = function(a) {
   isFinite(a) && (a = String(a));
   return goog.isString(a) ? /^\s*-?0x/i.test(a) ? parseInt(a, 16) : parseInt(a, 10) : NaN
 };
+goog.debug = {};
+goog.debug.Error = function(a) {
+  Error.captureStackTrace ? Error.captureStackTrace(this, goog.debug.Error) : this.stack = Error().stack || "";
+  a && (this.message = String(a))
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.asserts = {};
 goog.asserts.ENABLE_ASSERTS = goog.DEBUG;
 goog.asserts.AssertionError = function(a, b) {
@@ -2730,23 +2730,23 @@ cljs.core._hash["boolean"] = function(a) {
 cljs.core.IWithMeta["function"] = !0;
 cljs.core._with_meta["function"] = function(a, b) {
   return cljs.core.with_meta.call(null, function() {
-    if(void 0 === cljs.core.t2964) {
-      cljs.core.t2964 = {};
-      cljs.core.t2964 = function(a, b, c) {
+    if(void 0 === cljs.core.t2978) {
+      cljs.core.t2978 = {};
+      cljs.core.t2978 = function(a, b, c) {
         this.meta = a;
         this.f = b;
-        this.meta2965 = c;
+        this.meta2979 = c;
         this.cljs$lang$protocol_mask$partition1$ = 0;
         this.cljs$lang$protocol_mask$partition0$ = 393217
       };
-      cljs.core.t2964.cljs$lang$type = !0;
-      cljs.core.t2964.cljs$lang$ctorPrSeq = function() {
-        return cljs.core.list.call(null, "cljs.core/t2964")
+      cljs.core.t2978.cljs$lang$type = !0;
+      cljs.core.t2978.cljs$lang$ctorPrSeq = function() {
+        return cljs.core.list.call(null, "cljs.core/t2978")
       };
-      cljs.core.t2964.cljs$lang$ctorPrWriter = function(a, b) {
-        return cljs.core._write.call(null, b, "cljs.core/t2964")
+      cljs.core.t2978.cljs$lang$ctorPrWriter = function(a, b) {
+        return cljs.core._write.call(null, b, "cljs.core/t2978")
       };
-      var c = cljs.core.t2964.prototype, d = function(a, b) {
+      var c = cljs.core.t2978.prototype, d = function(a, b) {
         return cljs.core.apply.call(null, a.f, b)
       }, e = function(a, b) {
         var a = this, c = null;
@@ -2760,19 +2760,19 @@ cljs.core._with_meta["function"] = function(a, b) {
       };
       e.cljs$lang$arity$variadic = d;
       c.call = e;
-      cljs.core.t2964.prototype.apply = function(a, b) {
+      cljs.core.t2978.prototype.apply = function(a, b) {
         a = this;
         return a.call.apply(a, [a].concat(b.slice()))
       };
-      cljs.core.t2964.prototype.cljs$core$Fn$ = !0;
-      cljs.core.t2964.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-        return this.meta2965
+      cljs.core.t2978.prototype.cljs$core$Fn$ = !0;
+      cljs.core.t2978.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+        return this.meta2979
       };
-      cljs.core.t2964.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-        return new cljs.core.t2964(this.meta, this.f, b)
+      cljs.core.t2978.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+        return new cljs.core.t2978(this.meta, this.f, b)
       }
     }
-    return new cljs.core.t2964(b, a, null)
+    return new cljs.core.t2978(b, a, null)
   }(), b)
 };
 cljs.core.IMeta["function"] = !0;
@@ -25452,6 +25452,7 @@ keepTime.calendar.date_changed = function(a) {
   return cljs.core.truth_(a.date) ? window.location = keepTime.tools.date_to_url.call(null, a.date.toIsoString()) : null
 };
 keepTime.calendar.render_calendar = function(a, b) {
+  goog.i18n.DateTimeSymbols = goog.i18n.DateTimeSymbols_de;
   var c = new goog.ui.DatePicker;
   c.setDate(new Date(b));
   c.render(a);
